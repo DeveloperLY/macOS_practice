@@ -13,10 +13,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet var window: NSWindow!
     @IBOutlet weak var modalWindow: NSWindow!
+    @IBOutlet weak var modalSessionWindow: NSWindow!
     
-    @IBAction func showModalWindowButtonDidClick(_ sender: NSButton) {
-        NSApplication.shared.runModal(for: self.modalWindow)
-    }
+    var sessionCode: NSApplication.ModalSession?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -35,9 +34,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
+    // MARK: - Event
+    @IBAction func showModalWindowButtonDidClick(_ sender: NSButton) {
+        NSApplication.shared.runModal(for: self.modalWindow)
+    }
+
+    // 模态会话窗口
+    @IBAction func showSessionModalWindowButtonDidClick(_ sender: NSButton) {
+        sessionCode = NSApplication.shared.beginModalSession(for: self.modalSessionWindow)
+    }
+    
     // 退出模态窗口状态
-    @objc func windowClose(_ window: NSWindow) {
-        NSApplication.shared.stopModal()
+    // 对于任意一种模态窗口关闭后还必须而外调用结束模态的方法去结束状态
+    @objc func windowClose(_ aNSNotification: NSNotification) {
+        if let sessionCode = sessionCode {
+            NSApplication.shared.endModalSession(sessionCode)
+            self.sessionCode = nil
+        }
+        
+        if let window = aNSNotification.object as? NSWindow {
+            if self.modalWindow == window {
+                NSApplication.shared.stopModal()
+            }
+            
+            if window == self.window {
+                NSApp.terminate(self)
+            }
+        }
     }
 
 }

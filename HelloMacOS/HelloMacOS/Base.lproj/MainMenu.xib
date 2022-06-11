@@ -15,6 +15,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="HelloMacOS" customModuleProvider="target">
             <connections>
+                <outlet property="modalSessionWindow" destination="4c0-7Y-iRZ" id="Q7E-pK-PJT"/>
                 <outlet property="modalWindow" destination="AjN-rA-EYp" id="LSD-jf-JmX"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -692,14 +693,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z1H-HH-mSh" userLabel="showModalWindow">
-                        <rect key="frame" x="194" y="172" width="75" height="32"/>
+                        <rect key="frame" x="152" y="285" width="153" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Os2-Cl-veC">
+                        <buttonCell key="cell" type="push" title="ShowModalWindow" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Os2-Cl-veC">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="showModalWindowButtonDidClick:" target="Voe-Tx-rLC" id="5rw-LQ-BRK"/>
+                            <action selector="showModalWindowButtonDidClick:" target="Voe-Tx-rLC" id="ZPi-OW-qvG"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FlY-uE-fd3">
+                        <rect key="frame" x="147" y="226" width="163" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="ShowSessionWindow" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="P1n-We-fJK">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="showSessionModalWindowButtonDidClick:" target="Voe-Tx-rLC" id="2qt-BK-tL2"/>
                         </connections>
                     </button>
                 </subviews>
@@ -716,6 +728,17 @@
                 <autoresizingMask key="autoresizingMask"/>
             </view>
             <point key="canvasLocation" x="-361" y="374"/>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="4c0-7Y-iRZ">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="131" y="157" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <view key="contentView" id="OEz-HJ-ZVh">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <point key="canvasLocation" x="-388" y="-13"/>
         </window>
     </objects>
 </document>
